@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context } from "../store/AppContext";
 import { ContactCard } from "../component/ContactCard";
 import { Modal } from "../component/Modal";
 

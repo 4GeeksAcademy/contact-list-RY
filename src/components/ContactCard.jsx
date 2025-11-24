@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../store/AppContext";
 import { Link } from "react-router-dom";
 
 export const ContactCard = ({ contact, onDelete }) => {
@@ -9,7 +9,6 @@ export const ContactCard = ({ contact, onDelete }) => {
         <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-2 d-flex justify-content-center align-items-center">
-                    {/* Imagen circular simulada como en tu diseño */}
                     <img 
                         src="https://picsum.photos/200" 
                         className="img-fluid rounded-circle" 
@@ -27,7 +26,6 @@ export const ContactCard = ({ contact, onDelete }) => {
                 </div>
                 <div className="col-md-3 d-flex justify-content-end align-items-start p-3">
                     <Link to={`/edit/${contact.id}`} className="btn btn-link text-dark me-3"><i className="fas fa-pencil-alt"></i></Link>
-                    {/* Botón que dispara el Modal */}
                     <button onClick={() => onDelete(contact.id)} className="btn btn-link text-danger"><i className="fas fa-trash-alt"></i></button>
                 </div>
             </div>

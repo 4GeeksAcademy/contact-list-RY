@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context } from "../store/AppContext";
 
 export const AddContact = () => {
     const { actions, store } = useContext(Context);
     const navigate = useNavigate();
-    const { id } = useParams(); // Para saber si estamos editando
+    const { id } = useParams(); 
 
     const [contact, setContact] = useState({
         name: "",
@@ -14,7 +14,6 @@ export const AddContact = () => {
         address: ""
     });
 
-    // Si hay un ID en la URL, buscamos el contacto para rellenar los campos (Modo Edición)
     useEffect(() => {
         if (id && store.contacts.length > 0) {
             const currentContact = store.contacts.find(c => c.id == id);
@@ -33,7 +32,7 @@ export const AddContact = () => {
         } else {
             actions.addContact(contact);
         }
-        navigate("/"); // Volver a la lista
+        navigate("/"); 
     };
 
     return (
