@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
-import { Context } from "../store/AppContext";
 import { Link } from "react-router-dom";
 
 export const ContactCard = ({ contact, onDelete }) => {
-    const { actions } = useContext(Context);
 
     return (
         <div className="card mb-3">

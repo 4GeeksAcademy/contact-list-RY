@@ -1,14 +1,37 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React, { useEffect } from "react"; 
+import useGlobalReducer from "../hooks/useGlobalReducer"; // 1. Importamos el hook mágico
+import { ContactCard } from "../components/ContactCard";
 
-export const Home = () => {
+export const Contact = () => {
+	const { store, dispatch } = useGlobalReducer();
+	const loadContacts = async () => {
+		try {
+			const response = await fetch("https://playground.4geeks.com/contact/agendas/ruben/contacts");
+			if(response.status === 404){
+				 return;
+			}
+			const data = await response.json();
+			
+			dispatch({ 
+				type: "load_contacts", 
+				payload: data.contacts 
+			});
+			
+		} catch (error) {
+			console.error(error);
+		}
+	}
+	useEffect(() => {
+		loadContacts();
+	}, []);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
+		<div className="container">
+			{store.contacts.map((contact) => (
+				 <ContactCard key={contact.id} contact={contact} />
+			))}
 		</div>
 	);
-}; 
+};
+
+export default Contact;

@@ -61,7 +61,6 @@ export const AddContact = () => {
     return (
         <div className="container mt-5">
             <h1 className="text-center">{id ? "Editar Contacto" : "Agregar Nuevo Contacto"}</h1>
-            
             <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
                 <div className="mb-3">
                     <label className="form-label">Full Name</label>
